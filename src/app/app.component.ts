@@ -12,6 +12,9 @@ AfterViewChecked
 @Component({
   selector: 'app-root',
   template: `
+  <app-title *ngIf="destruir"></app-title>
+  <br>
+  <button (click)="destruirComponent()">Destruir componente</button>
   {{ valor }}
   <button (click)="adicionar()">Adicionar</button>
   <app-title></app-title>
@@ -24,6 +27,7 @@ AfterViewInit,
 AfterViewChecked {
   public valor: number = 1;
 
+  public destruir:boolean = true;
  constructor() {  
 }
 
@@ -46,6 +50,9 @@ public adicionar(): number {
 
  ngAfterViewInit(): void {
   console.log("ngAfterViewInit");
+ }
+ public destruirComponent(){
+  this.destruir = false;
  }
 }
 
